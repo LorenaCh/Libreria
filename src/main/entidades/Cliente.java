@@ -12,23 +12,29 @@ import javax.persistence.Id;
  * @author Rocio
  */
 @Entity
-public class Autor implements Serializable {
+public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
+    @Column(nullable =false)
+    private Long dni;
+    @Column(nullable =false)
+    private String apellido;
+    @Column(nullable =false)
     private String nombre;
-    private Boolean alta;
+    private String telefono;
 
-    public Autor() {
+    public Cliente() {
     }
 
-    public Autor(Integer id, String nombre, Boolean alta) {
+    public Cliente(Integer id, Long dni, String apellido, String nombre, String telefono) {
         this.id = id;
+        this.dni = dni;
+        this.apellido = apellido;
         this.nombre = nombre;
-        this.alta = alta;
+        this.telefono = telefono;
     }
 
     public Integer getId() {
@@ -39,6 +45,22 @@ public class Autor implements Serializable {
         this.id = id;
     }
 
+    public Long getDni() {
+        return dni;
+    }
+
+    public void setDni(Long dni) {
+        this.dni = dni;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -47,14 +69,14 @@ public class Autor implements Serializable {
         this.nombre = nombre;
     }
 
-    public Boolean getAlta() {
-        return alta;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setAlta(Boolean alta) {
-        this.alta = alta;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -65,10 +87,10 @@ public class Autor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Autor)) {
+        if (!(object instanceof Cliente)) {
             return false;
         }
-        Autor other = (Autor) object;
+        Cliente other = (Cliente) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -77,7 +99,8 @@ public class Autor implements Serializable {
 
     @Override
     public String toString() {
-        return "Autor{" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+        return "Cliente{" + "id=" + id + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", telefono=" + telefono + '}';
     }
 
+    
 }
